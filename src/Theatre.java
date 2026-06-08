@@ -37,12 +37,12 @@ public class Theatre {
         opera.printListOfActors();
         System.out.println(separator);
 
-        show.replaceActor(supportingMaleActor, leadMaleActor);
+        show.replaceActor(supportingMaleActor, leadMaleActor.getSurname());
         show.printListOfActors();
         System.out.println(separator);
 
         Actor doctorWho = new Actor("Anonimous", "Who", Gender.MALE, 250);
-        ballet.replaceActor(doctorWho, leadMaleActor);
+        ballet.replaceActor(doctorWho, leadMaleActor.getSurname());
         System.out.println(separator);
 
         ballet.printLibrettoText();

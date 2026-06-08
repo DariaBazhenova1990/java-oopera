@@ -20,6 +20,11 @@ public class Show {
         }
     }
 
+    public void printDirectorInfo() {
+        System.out.println("Информация о режиссере спектакля '" + this.title + "\':");
+        System.out.println(this.director);
+    }
+
     public void addActorToShow(Actor newActor) {
         for (Actor actor : listOfActors) {
             if (actor.equals(newActor)) {
@@ -33,16 +38,17 @@ public class Show {
 
     }
 
-    public void replaceActor(Actor newActor, Actor existedActor) {
+    public void replaceActor(Actor newActor, String existedActorSurname) {
         boolean isReplaced = false;
         System.out.println("Заменяем актера в спектакле '" + this.title + "\'.");
         for (Actor actor : listOfActors) {
-            if (actor.equals(existedActor)) {
+            String actorSurname = actor.getSurname();
+            if (actorSurname.equals(existedActorSurname)) {
                 int index = listOfActors.indexOf(actor);
                 listOfActors.set(index, newActor);
                 isReplaced = true;
                 System.out.println("Исключен:");
-                System.out.println(existedActor);
+                System.out.println(existedActorSurname);
                 System.out.println("Добавлен:");
                 System.out.println(newActor);
                 break;
@@ -50,7 +56,7 @@ public class Show {
         }
 
         if (!isReplaced) {
-            System.out.println("Выбранного на замену актера (" + existedActor + ") нет в списке актеров спектакля!");
+            System.out.println("Выбранного на замену актера (" + existedActorSurname + ") нет в списке актеров спектакля!");
         }
 
     }

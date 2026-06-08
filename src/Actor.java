@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Actor extends Person {
     private int height;
 
@@ -10,29 +8,19 @@ public class Actor extends Person {
         System.out.println("В театре новый(ая) " + this);
     }
 
+
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (this.getClass() != obj.getClass()) return false;
-        Actor otherActor = (Actor) obj;
-        return Objects.equals(name, otherActor.name) &&
-                Objects.equals(surname, otherActor.surname) &&
-                (height == otherActor.height);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Actor actor = (Actor) o;
+        return height == actor.height;
     }
 
     @Override
     public int hashCode() {
-        int hash = 17;
-
-        if (name != null) {
-            hash = hash + name.hashCode();
-        }
-        hash = hash * 31;
-
-        if (surname != null) {
-            hash = hash + surname.hashCode();
-        }
+        int hash = super.hashCode();
 
         if (height != 0) {
             hash = hash + height;
